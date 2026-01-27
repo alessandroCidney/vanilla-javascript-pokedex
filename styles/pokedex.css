@@ -20,14 +20,55 @@
 
   padding: 13px;
 
+  position: relative;
+
   background-color: #F0F3FF;
 
   border-radius: 8px;
 }
 
+.pokedex-list article header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 22px;
+}
+
+.pokedex-list article header h2 {
+  position: absolute;
+  bottom: 0;
+  left: 0px;
+
+  width: 100%;
+  height: 61px;
+
+  text-align: center;
+  text-transform: capitalize;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  color: #212E4C;
+}
+
+.pokedex-list article header .pokemon-type {
+  text-transform: capitalize;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 12px;
+}
+
+.pokedex-list article header .pokemon-number {
+  font-weight: 700;
+  font-size: 13px;
+  color: #263156;
+}
+
 .pokedex-list .image-container {
   width: 143px;
   height: 143px;
+
+  margin: auto;
 }
 
 .pokedex-list .image-container img {

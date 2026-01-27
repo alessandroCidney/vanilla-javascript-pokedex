@@ -1,0 +1,26 @@
+const POKEMON_TYPE_COLORS = {
+  NORMAL: '#CA98A7',
+  FIGHTING: '#EF6138',
+  FLYING: '#93B2C7',
+  POISON: '#5E2D88',
+  GROUND: '#6E491F',
+  ROCK: '#8B3E21',
+  BUG: '#1C4B27',
+  GHOST: '#33336B',
+  STEEL: '#42BD94',
+  FIRE: '#FD4C5A',
+  WATER: '#1552E2',
+  GRASS: '#11B047',
+  ELECTRIC: '#E3E32B',
+  PSYCHIC: '#F81C91',
+  ICE: '#86D2F5',
+  DRAGON: '#61CAD9',
+  DARK: '#040706',
+  FAIRY: '#EA1369',
+  STELLAR: '',
+  UNKNOWN: '',
+}
+
+const NAME_EXCEPTIONS = {
+  'porygon-z': 'Porygon-Z'
+}

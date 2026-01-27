@@ -10,8 +10,6 @@ function renderPaginationButtons() {
   const nextPages = [currentPage + 1, currentPage + 2]
     .filter(pageNumber => pageNumber < totalPages)
 
-  const showInitialPage = currentPage 
-
   const showFirstEllipsis = currentPage >= 5
   const showSecondEllipsis = currentPage <= totalPages - 4
 

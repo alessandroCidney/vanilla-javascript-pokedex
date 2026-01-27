@@ -13,15 +13,25 @@ function renderList() {
       pokedexItem => `<article>
         <header>
           <h2>
-            ${pokedexItem.name}
+            ${pokedexItem.name in NAME_EXCEPTIONS ? NAME_EXCEPTIONS[pokedexItem.name] : pokedexItem.name.split('-').join(' ')}
           </h2>
 
-          <div>
-            #${pokedexItem.id}
+          <div class="pokemon-type">
+            ${
+              pokedexItem
+                .types
+                .map(typesItem => `<span style="color: ${POKEMON_TYPE_COLORS[typesItem?.type?.name.toUpperCase()] ?? 'black'}">
+                    ${typesItem.type.name}
+                  </span>
+                `)
+                .join(' ')
+            }
           </div>
 
-          <div>
-            ${pokedexItem.types.map(typesItem => typesItem.type.name).join(' ')}
+          <div
+            class="pokemon-number"
+          >
+            #${pokedexItem.id}
           </div>
         </header>
 

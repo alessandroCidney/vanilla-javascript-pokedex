@@ -1,12 +1,14 @@
 const pokedexService = new PokedexService()
 
-const items = []
-const currentPage = 1
+let pokedexItems = []
+
+let currentPage = 1
+let totalPages = 1
 
 const pokedexListSection = document.querySelector('.pokedex-list')
 
 function renderList() {
-  pokedexListSection.innerHTML = pokedexService.items
+  pokedexListSection.innerHTML = pokedexItems
     .map(
       pokedexItem => `<article>
         <header>
@@ -35,9 +37,22 @@ function renderList() {
 }
 
 async function main() {
-  await pokedexService.list()
+  const urlParams = new URLSearchParams(window.location.search)
+
+  const urlPage = parseInt(urlParams.get('page'))
+
+  console.log('page', urlPage)
+
+  currentPage = isNaN(urlPage) ? 1 : urlPage
+  
+  const { count, results } = await pokedexService.list(currentPage)
+
+  pokedexItems = results
+  totalPages = Math.ceil(count / ITEMS_PER_PAGE)
 
   renderList()
+
+  renderPaginationButtons()
 }
 
 main()

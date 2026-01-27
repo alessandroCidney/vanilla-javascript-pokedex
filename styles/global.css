@@ -47,6 +47,12 @@ a {
   background-color: var(--button-background-color);
 }
 
+.default-button.default-button--disabled {
+  opacity: 0.5;
+
+  pointer-events: none;
+}
+
 .main-header h1 {
   width: 124px;
 }

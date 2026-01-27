@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* CSS Reset */
+* {
+  padding: 0;
+  margin: 0;
+
+  list-style: none;
+
+  box-sizing: border-box;
+
+  font-family: Inter, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+:root {
+  --button-text-color: #1E1E1E;
+  --button-background-color: #F5F5F5;
+}
+
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 99px;
+
+  padding: 0 32px;
+
+  border-bottom: 1px solid #D9D9D9;
+}
+
+.default-button {
+  padding: 8px;
+
+  color: var(--button-text-color);
+
+  border-radius: 8px;
+
+  cursor: pointer;
+}
+
+.default-button:hover {
+  background-color: var(--button-background-color);
+}
+
+.main-header h1 {
+  width: 124px;
+}
+
+.main-header a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+}
+
+.main-header .logo {
+  width: 100%;
+}
+
+.main-header nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-form {
+  margin: 32px 0;
+}
+
+.search-form * {
+  font-family: Roboto, sans-serif;
+}
+
+.search-form .search-input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+
+  max-width: 720px;
+  min-width: 360px;
+  height: 56px;
+
+  margin: auto;
+
+  background-color: #F2F2F7;
+  
+  border-radius: 9999px;
+}
+
+.search-form .search-input-container label {
+  width: 100%;
+  height: 100%;
+}
+
+.search-form .search-input-container input {
+  width: 100%;
+  height: 100%;
+  
+  padding-left: 56px;
+
+  background-color: transparent;
+  border: none;
+
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.search-form .search-input-container input:focus {
+  outline: none;
+}
+
+.search-form .search-input-container img {
+  padding: 12px;
+  
+  position: absolute;
+
+  right: 0;
+}
+
+.only-screen-reader {
+  position: absolute;
+  left: -99999999px;
+}

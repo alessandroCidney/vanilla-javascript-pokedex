@@ -1,0 +1,35 @@
+.pokedex-list * {
+  font-family: 'DM Sans', sans-serif;
+}
+
+.pokedex-list {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 203px);
+  gap: 17px;
+
+  width: 1303px;
+  max-width: 100%;
+
+  margin: 0 auto 104px auto;
+}
+
+.pokedex-list article {
+  width: 203px;
+  height: 285px;
+
+  padding: 13px;
+
+  background-color: #F0F3FF;
+
+  border-radius: 8px;
+}
+
+.pokedex-list .image-container {
+  width: 143px;
+  height: 143px;
+}
+
+.pokedex-list .image-container img {
+  width: 100%;
+}

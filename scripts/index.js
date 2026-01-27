@@ -46,7 +46,19 @@ function renderList() {
     .join('')
 }
 
+function setLoading(bool) {
+  if (bool && pokedexListSection.getAttribute('aria-busy') !== 'true') {
+    pokedexListSection.setAttribute('aria-busy', 'true')
+  }
+
+  if (!bool && pokedexListSection.getAttribute('aria-busy') !== 'false') {
+    pokedexListSection.setAttribute('aria-busy', 'false')
+  }
+}
+
 async function main() {
+  setLoading(true)
+
   const urlParams = new URLSearchParams(window.location.search)
 
   const urlPage = parseInt(urlParams.get('page'))
@@ -63,6 +75,8 @@ async function main() {
   renderList()
 
   renderPaginationButtons()
+
+  setLoading(false)
 }
 
 main()

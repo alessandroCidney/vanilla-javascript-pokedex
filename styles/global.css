@@ -16,6 +16,10 @@ a {
   text-decoration: none;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --button-text-color: #1E1E1E;
   --button-background-color: #F5F5F5;

@@ -19,6 +19,7 @@ a {
 :root {
   --button-text-color: #1E1E1E;
   --button-background-color: #F5F5F5;
+  --button-selected-background-color: #2C2C2C;
 }
 
 .main-header {
@@ -34,6 +35,11 @@ a {
 }
 
 .default-button {
+  display: inline-block;
+  text-align: center;
+
+  min-width: 32px;
+
   padding: 8px;
 
   color: var(--button-text-color);
@@ -51,6 +57,11 @@ a {
   opacity: 0.5;
 
   pointer-events: none;
+}
+
+.default-button.default-button--selected {
+  color: #FFF;
+  background-color: var(--button-selected-background-color);
 }
 
 .main-header h1 {

@@ -13,3 +13,9 @@
 
   gap: 8px;
 }
+
+@media (max-width: 600px) {
+  .pagination li:not(.pagination-corner-button) {
+    display: none;
+  }
+}

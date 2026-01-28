@@ -8,6 +8,9 @@
 
 .search-form * {
   font-family: Roboto, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: #49454F;
 
   max-width: 100%;
 }

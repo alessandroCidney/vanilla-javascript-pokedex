@@ -24,12 +24,6 @@ html {
   scroll-behavior: smooth;
 }
 
-:root {
-  --button-text-color: #1E1E1E;
-  --button-background-color: #F5F5F5;
-  --button-selected-background-color: #2C2C2C;
-}
-
 .default-button {
   display: flex;
   align-items: center;
@@ -43,7 +37,7 @@ html {
   padding: 8px;
 
   font-size: 16px;
-  color: var(--button-text-color);
+  color: #1E1E1E;
 
   background-color: transparent;
 
@@ -54,18 +48,20 @@ html {
 }
 
 .default-button:hover, .default-button.default-button--highlighted {
-  background-color: var(--button-background-color);
+  background-color: #F5F5F5;
 }
 
 .default-button.default-button--disabled {
   opacity: 0.5;
 
   pointer-events: none;
+
+  color: #757575;
 }
 
 .default-button.default-button--selected {
   color: #FFF;
-  background-color: var(--button-selected-background-color);
+  background-color: #2C2C2C;
 }
 
 .default-header {

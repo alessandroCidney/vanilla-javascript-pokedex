@@ -19,10 +19,11 @@ function renderPaginationButtons() {
   const showSecondEllipsis = currentPage <= totalPages - 4
 
   paginationUl.innerHTML = `
-    <li>
+    <li class="pagination-corner-button">
       <button
         class="default-button ${previousPage < 1 ? 'default-button--disabled' : ''}"
         onclick="loadPageItems(${previousPage})"
+        ${previousPage < 1 ? 'disabled' : ''}
       >
         <img
           src="./assets/images/icons/arrow-left.png"
@@ -100,10 +101,11 @@ function renderPaginationButtons() {
         : ''
     }
 
-    <li>
+    <li class="pagination-corner-button">
       <button
         class="default-button ${nextPage > totalPages ? 'default-button--disabled' : ''}"
         onclick="loadPageItems(${nextPage})"
+        ${nextPage > totalPages ? 'disabled' : ''}
       >
         <span>Próxima</span>
 

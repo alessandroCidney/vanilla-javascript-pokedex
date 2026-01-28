@@ -20,9 +20,9 @@ function renderPaginationButtons() {
 
   paginationUl.innerHTML = `
     <li>
-      <a
-        href="?page=${previousPage}"
+      <button
         class="default-button ${previousPage < 1 ? 'default-button--disabled' : ''}"
+        onclick="loadPageItems(${previousPage})"
       >
         <img
           src="./assets/images/icons/arrow-left.png"
@@ -30,18 +30,18 @@ function renderPaginationButtons() {
         >
 
         <span>Anterior</span>
-      </a>
+      </button>
     </li>
 
     ${
       currentPage !== 1
         ? `<li>
-            <a
-              href="?page=1"
+            <button
               class="default-button"
+              onclick="loadPageItems(1)"
             >
               1
-            </a>
+            </button>
           </li>`
         : ''
     }
@@ -51,36 +51,35 @@ function renderPaginationButtons() {
     ${
       previousPages
         .map(pageNumber => `<li>
-            <a
-              href="?page=${pageNumber}"
+            <button
               class="default-button"
+              onclick="loadPageItems(${pageNumber})"
             >
               ${pageNumber}
-            </a>
+            </button>
           </li>`
         )
         .join('')
     }
 
     <li>
-      <a
-        href="#"
+      <button
         aria-current="page"
         class="default-button default-button--selected"
       >
         ${currentPage}
-      </a>
+      </button>
     </li>
 
     ${
       nextPages
         .map(pageNumber => `<li>
-            <a
-              href="?page=${pageNumber}"
+            <button
               class="default-button"
+              onclick="loadPageItems(${pageNumber})"
             >
               ${pageNumber}
-            </a>
+            </button>
           </li>`
         )
         .join('')
@@ -91,20 +90,20 @@ function renderPaginationButtons() {
     ${
       currentPage !== totalPages
         ? `<li>
-            <a
-              href="?page=${totalPages}"
+            <button
               class="default-button"
+              onclick="loadPageItems(${totalPages})"
             >
               ${totalPages}
-            </a>
+            </button>
           </li>`
         : ''
     }
 
     <li>
-      <a
-        href="?page=${nextPage}"
+      <button
         class="default-button ${nextPage > totalPages ? 'default-button--disabled' : ''}"
+        onclick="loadPageItems(${nextPage})"
       >
         <span>Próxima</span>
 
@@ -112,7 +111,7 @@ function renderPaginationButtons() {
           src="./assets/images/icons/arrow-right.png"
           alt="Seta para a direta"
         >
-      </a>
+      </button>
     </li>
   `
 }

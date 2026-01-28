@@ -41,8 +41,10 @@ html {
   min-width: 32px;
   
   padding: 8px;
-  
+
+  font-size: 16px;
   color: var(--button-text-color);
+
   background-color: transparent;
 
   border: none;

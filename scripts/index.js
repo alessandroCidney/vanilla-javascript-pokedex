@@ -13,15 +13,31 @@ const pokedexListSection = document.querySelector('.pokedex-list')
   Busca página atual pela URL e ativa renderizações de listagem e paginação
 */
 async function main() {  
+  const urlParams = new URLSearchParams(window.location.search)
+
+  const urlPage = parseInt(urlParams.get('page'))
+
+  await loadPageItems(isNaN(urlPage) ? 1 : urlPage)
+}
+
+main()
+
+function updateUrlQueryWithoutReload(newQuery) {
+  if (history.pushState) {
+    const newUrl = window.location.protocol + '//' + window.location.host + window.location.pathname + newQuery
+
+    window.history.pushState({ path: newUrl }, '' , newUrl)
+  }
+}
+
+async function loadPageItems(pageNumber) {
   try {
     setLoading(true)
 
-    const urlParams = new URLSearchParams(window.location.search)
+    window.scrollTo(0, 0)
 
-    const urlPage = parseInt(urlParams.get('page'))
+    currentPage = pageNumber
 
-    currentPage = isNaN(urlPage) ? 1 : urlPage
-    
     const { count, results } = await pokedexService.list(currentPage)
 
     pokedexItems = results
@@ -29,14 +45,14 @@ async function main() {
 
     renderList()
     renderPaginationButtons()
+
+    updateUrlQueryWithoutReload(`?page=${currentPage}`)
   } catch (err) {
     renderErrorAlert()
   } finally {
     setLoading(false)
   }
 }
-
-main()
 
 /*
   Ativa o carregamento e as animações via CSS
@@ -67,6 +83,8 @@ function renderList() {
         text: POKEMON_TYPES_DATA[typesItem?.type?.name.toUpperCase()]?.TEXT ?? 'black'
       }))
 
+      const pokemonImage = pokedexItem.sprites?.other?.['official-artwork']?.['front_default'] ?? './assets/images/vectors/empty-image.svg'
+
       return `<article>
         <header>
           <h2>
@@ -93,7 +111,7 @@ function renderList() {
 
         <div class="image-container">
           <img
-            src="${pokedexItem.sprites.other['official-artwork']['front_default']}"
+            src="${pokemonImage}"
             alt="${pokedexItem.name}"
           />
         </div>

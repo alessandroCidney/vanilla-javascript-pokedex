@@ -2,6 +2,9 @@
 
 ## Como executar?
 
+### Acessar demo online
+O projeto foi disponibilizado via **Github Pages** e pode ser acessado em <https://alessandrocidney.github.io/vanilla-javascript-pokedex/>
+
 ### Execução local via http-server
 Caso possua o **Node.js** e o **npm** corretamente configurados, primeiramente baixe o projeto via GitHub.
 

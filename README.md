@@ -14,6 +14,14 @@ Depois, acesse a basta do projeto e, no terminal, digite o comando:
 npx http-server .
 ```
 
+Após isso, a página ficará disponível em <http://localhost:8080> (ou na URL informada via terminal)
+
+**Observações:**
+Para este método, se for solicitado para realizar o download de algum pacote, basta pressionar Y para confirmar.
+
+E se a execução for interrompida após o download, basta utilizar o comando novamente.
+
+
 ### Execução local diretamente no navegador
 Caso não possua o Node.js e o npm configurados, você pode abrir o arquivo **index.html** diretamente no navegador.
 

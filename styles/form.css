@@ -28,8 +28,6 @@
   background-color: #F2F2F7;
   
   border-radius: 9999px;
-
-  overflow: hidden;
 }
 
 .search-form .search-input-container label {
@@ -41,7 +39,7 @@
   width: 100%;
   height: 100%;
   
-  padding-left: 56px;
+  padding: 0 56px;
 
   background-color: transparent;
   border: none;
@@ -58,14 +56,15 @@
   padding: 19px;
   
   position: absolute;
-
   right: 0;
+
+  border-radius: 50%;
+
+  background-color: #F2F2F7;
 }
 
 .search-form .search-input-container button:hover {
   filter: brightness(.9);
-
-  border-radius: 50%;
 }
 
 .search-form .search-input-container button img {

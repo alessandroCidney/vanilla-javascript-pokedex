@@ -1,3 +1,7 @@
+/*
+  Estilos relacionados à listagem de pokémons
+*/
+
 .pokedex-list * {
   font-family: 'DM Sans', sans-serif;
 }
@@ -12,7 +16,12 @@
   animation: opacityAnimation .5s linear;
 }
 
+.pokedex-list[aria-busy="true"] * {
+  display: none;
+}
+
 .pokedex-list[aria-busy="true"]::after {
+  display: block;
   content: '';
 
   background-image: url('../assets/images/vectors/loading.svg');
@@ -26,18 +35,16 @@
   height: 200px;
 }
 
-.pokedex-list[aria-busy="true"] *:not(::after) {
-  display: none;
-}
-
 .pokedex-list {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 203px);
   gap: 17px;
 
-  width: 1303px;
+  width: 1337px;
   max-width: 100%;
+
+  padding: 0 17px;
 
   margin: 0 auto 104px auto;
 }
@@ -101,6 +108,13 @@
 
 .pokedex-list .image-container img {
   width: 100%;
+}
+
+.pokedex-list .pokedex-list-alert {
+  width: 300px;
+  max-width: 100%;
+
+  text-align: center;
 }
 
 @keyframes loadingAnimation {

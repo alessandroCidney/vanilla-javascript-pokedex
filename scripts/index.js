@@ -7,21 +7,77 @@ let totalPages = 1
 
 const pokedexListSection = document.querySelector('.pokedex-list')
 
+/*
+  Ponto inicial
+
+  Busca página atual pela URL e ativa renderizações de listagem e paginação
+*/
+async function main() {  
+  try {
+    setLoading(true)
+
+    const urlParams = new URLSearchParams(window.location.search)
+
+    const urlPage = parseInt(urlParams.get('page'))
+
+    currentPage = isNaN(urlPage) ? 1 : urlPage
+    
+    const { count, results } = await pokedexService.list(currentPage)
+
+    pokedexItems = results
+    totalPages = Math.ceil(count / ITEMS_PER_PAGE)
+
+    renderList()
+    renderPaginationButtons()
+  } catch (err) {
+    renderErrorAlert()
+  } finally {
+    setLoading(false)
+  }
+}
+
+main()
+
+/*
+  Ativa o carregamento e as animações via CSS
+*/
+function setLoading(bool) {
+  if (bool && pokedexListSection.getAttribute('aria-busy') !== 'true') {
+    pokedexListSection.setAttribute('aria-busy', 'true')
+  }
+
+  if (!bool && pokedexListSection.getAttribute('aria-busy') !== 'false') {
+    pokedexListSection.setAttribute('aria-busy', 'false')
+  }
+}
+
+/*
+  Renderização da listagem de pokémons
+*/
+
 function renderList() {
   pokedexListSection.innerHTML = pokedexItems
-    .map(
-      pokedexItem => `<article>
+    .map(pokedexItem => {
+      const pokemonName = pokedexItem.name in NAME_EXCEPTIONS
+        ? NAME_EXCEPTIONS[pokedexItem.name]
+        : pokedexItem.name.split('-').join(' ')
+
+      const pokemonTypes = pokedexItem.types.map(typesItem => ({
+        color: POKEMON_TYPES_DATA[typesItem?.type?.name.toUpperCase()]?.COLOR ?? 'black',
+        text: POKEMON_TYPES_DATA[typesItem?.type?.name.toUpperCase()]?.TEXT ?? 'black'
+      }))
+
+      return `<article>
         <header>
           <h2>
-            ${pokedexItem.name in NAME_EXCEPTIONS ? NAME_EXCEPTIONS[pokedexItem.name] : pokedexItem.name.split('-').join(' ')}
+            ${pokemonName}
           </h2>
 
           <div class="pokemon-type">
             ${
-              pokedexItem
-                .types
-                .map(typesItem => `<span style="color: ${POKEMON_TYPE_COLORS[typesItem?.type?.name.toUpperCase()] ?? 'black'}">
-                    ${typesItem.type.name}
+              pokemonTypes
+                .map(typesItem => `<span style="color: ${typesItem.color}">
+                    ${typesItem.text}
                   </span>
                 `)
                 .join(' ')
@@ -42,41 +98,26 @@ function renderList() {
           />
         </div>
       </article>`
-    )
+    })
     .join('')
 }
 
-function setLoading(bool) {
-  if (bool && pokedexListSection.getAttribute('aria-busy') !== 'true') {
-    pokedexListSection.setAttribute('aria-busy', 'true')
-  }
+function renderEmptyAlert() {
+  pokedexListSection.innerHTML = `<div class="pokedex-list-alert">
+    <h2>Nenhum item encontrado</h2>
 
-  if (!bool && pokedexListSection.getAttribute('aria-busy') !== 'false') {
-    pokedexListSection.setAttribute('aria-busy', 'false')
-  }
+    <p>
+      Tente usar um nome mais específico (exemplos: pikachu, squirtle, charmander, etc.)
+    </p>
+  </div>`
 }
 
-async function main() {
-  setLoading(true)
+function renderErrorAlert() {
+  pokedexListSection.innerHTML = `<div class="pokedex-list-alert">
+    <h2>Ocorreu um erro</h2>
 
-  const urlParams = new URLSearchParams(window.location.search)
-
-  const urlPage = parseInt(urlParams.get('page'))
-
-  console.log('page', urlPage)
-
-  currentPage = isNaN(urlPage) ? 1 : urlPage
-  
-  const { count, results } = await pokedexService.list(currentPage)
-
-  pokedexItems = results
-  totalPages = Math.ceil(count / ITEMS_PER_PAGE)
-
-  renderList()
-
-  renderPaginationButtons()
-
-  setLoading(false)
+    <p>
+      Por favor, tente novamente.
+    </p>
+  </div>`
 }
-
-main()

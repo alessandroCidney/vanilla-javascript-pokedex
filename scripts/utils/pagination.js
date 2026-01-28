@@ -1,3 +1,8 @@
+/*
+  Arquivo que renderiza a paginação e calcula os botões certos que devem aparecer
+  dependendo da página atual
+*/
+
 const paginationUl = document.querySelector('.pagination ul')
 
 function renderPaginationButtons() {
@@ -24,7 +29,7 @@ function renderPaginationButtons() {
           alt="Seta para a esquerda"
         >
 
-        Anterior
+        <span>Anterior</span>
       </a>
     </li>
 
@@ -101,7 +106,7 @@ function renderPaginationButtons() {
         href="?page=${nextPage}"
         class="default-button ${nextPage > totalPages ? 'default-button--disabled' : ''}"
       >
-        Próxima
+        <span>Próxima</span>
 
         <img
           src="./assets/images/icons/arrow-right.png"
@@ -110,4 +115,8 @@ function renderPaginationButtons() {
       </a>
     </li>
   `
+}
+
+function hidePaginationButtons() {
+  paginationUl.innerHTML = ''
 }

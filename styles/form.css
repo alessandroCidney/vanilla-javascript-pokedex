@@ -1,0 +1,73 @@
+/*
+  Estilos do formulário de pesquisa
+*/
+
+.search-form {
+  margin: 32px 0;
+}
+
+.search-form * {
+  font-family: Roboto, sans-serif;
+
+  max-width: 100%;
+}
+
+.search-form .search-input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+
+  width: 720px;
+  max-width: calc(100% - 34px);
+  height: 56px;
+
+  margin: auto;
+
+  background-color: #F2F2F7;
+  
+  border-radius: 9999px;
+
+  overflow: hidden;
+}
+
+.search-form .search-input-container label {
+  width: 100%;
+  height: 100%;
+}
+
+.search-form .search-input-container input {
+  width: 100%;
+  height: 100%;
+  
+  padding-left: 56px;
+
+  background-color: transparent;
+  border: none;
+
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.search-form .search-input-container input:focus {
+  outline: none;
+}
+
+.search-form .search-input-container button {
+  padding: 19px;
+  
+  position: absolute;
+
+  right: 0;
+}
+
+.search-form .search-input-container button:hover {
+  filter: brightness(.9);
+
+  border-radius: 50%;
+}
+
+.search-form .search-input-container button img {
+  width: 18px;
+}
